@@ -2,13 +2,13 @@
 
 
 var drinkorder = {
-	"size": ["short", "tall", "grande", "venti"], 
-	"temp": ["warm", "iced"],
-	"espresso": ["single-shot", "double-shot", "triple-shot", "quad-shot"],
-	"type": ["latte", "americano", "cappuccino"],
-	"milk": ["non-fat", "two percent", "whole", "soy","half-n-half", "almond", "coconut"], 
-	"flavor": ["chocolate", "caramel", "vanilla", "hazelnut", "cinnamon dolce", "orange", "raspberry", "peppermint", "almond"],
-	"whip": ["heavy whip", "no whip", "light whip"] 
+	size: ["short", "tall", "grande", "venti"], 
+	temp: ["warm", "iced"],
+	espresso: ["single-shot", "double-shot", "triple-shot", "quad-shot"],
+	type: ["latte", "americano", "cappuccino"],
+	milk: ["non-fat", "two percent", "whole", "soy","half-n-half", "almond", "coconut"], 
+	flavor: ["chocolate", "caramel", "vanilla", "hazelnut", "cinnamon dolce", "orange", "raspberry", "peppermint", "almond"],
+	whip: ["heavy whip", "no whip", "light whip"] 
 }
 
 
