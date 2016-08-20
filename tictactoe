@@ -1,0 +1,134 @@
+//TicTacToe!
+
+var board = [0,0,0,0,0,0,0,0,0]
+var gameOn = true;
+var moveOn = true;
+
+var i = Math.floor(Math.random()*2);
+
+var Inputmove = function(p) {
+	switch(p) {
+		case "A1": return 0;
+		case "B1": return 1;
+		case "C1": return 2;
+		case "A2": return 3;
+		case "B2": return 4;
+		case "C2": return 5;
+		case "A3": return 6;
+		case "B3": return 7;
+		case "C3": return 8;
+		detault : console.log ("Entry Unknown!");
+	}
+};
+
+
+
+var Outputmove = function(p){
+    switch(p) {
+        case  1: return "x";
+        case 10: return "o";
+        default: return " ";
+    }
+};
+
+
+var drawBoard = function(){
+	console.log(" A  B  C");
+	console.log("1 " + Outputmove(board[0]) + "|" + Outputmove(board[1]) + "|" + Outputmove(board[2]));
+	console.log(" -----");
+    console.log("2 " + Outputmove(board[3]) + "|" + Outputmove(board[4]) + "|" + Outputmove(board[5]));
+    console.log(" -----");
+    console.log("3 " + Outputmove(board[6]) + "|" + Outputmove(board[7]) + "|" + Outputmove(board[8]));
+};
+
+
+drawBoard();
+
+if(i === 0) {
+	console.log("You have the first move!");
+} else {
+	console.log("Computer has the first move!");
+}
+
+while(gameOn) {
+	if(i === 0) {
+		var yourmove = Inputmove(prompt("What is your move?")); 
+		var moveOn = true; 
+		while(moveOn) {
+			if (board[yourmove] === 0) {
+				board[yourmove] = 1; 
+				drawBoard();
+				moveOn = false;
+				i = 1;
+			} else {
+				yourmove = Inputmove(prompt("This spot is already taken. Try again please."));
+			}
+		}
+	} else if (i === 1) {
+		console.log("It's the computer's turn!");
+		var computermove = Math.floor(Math.random()*9);
+		moveOn = true; 
+		while(moveOn) { 
+			if (board[computermove] === 0) {
+				board[computermove] = 10;
+				drawBoard(); 
+				moveOn = false; 
+				i = 0; 
+			} 
+		}
+	}
+
+ 	var winningscores = [
+        board[0] + board[1] + board[2],
+        board[3] + board[4] + board[5],
+        board[6] + board[7] + board[8],
+        board[0] + board[3] + board[6],
+        board[1] + board[4] + board[7],
+        board[2] + board[5] + board[8],
+        board[0] + board[4] + board[8],
+        board[2] + board[4] + board[6]
+    ];
+
+
+	var scoreSum = 0;
+
+	for(var k = 0; k < board.length; k++){
+        scoreSum += board[k];
+	}
+
+
+	for(var j = 0; j < winningscores.length; j++){
+    	if(winningscores[j] === 3){
+        	console.log("You Win!");
+        	gameOn = false;
+        	playAgain();
+        	break;
+    	} else if(winningscores[j] === 30){
+        	console.log("You Lose!");
+        	gameOn = false;
+        	playAgain();
+        	break;
+    	}
+	}
+
+
+	if(gameOn === true && (scoreSum === 54 || scoreSum === 45)){
+    	console.log("Tie!");
+    	gameOn = false;
+    	playAgain();
+	}
+}
+
+
+function playAgain() {
+	var y = confirm("Play again?"); 
+		if (y = true) {
+			alert("Yay! Let's play again.");
+			gameOn = true;
+		} else {
+			alert("Alright then. Good playin with ya!")
+		}
+}
+
+
+	
