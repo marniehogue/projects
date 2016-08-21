@@ -51,6 +51,7 @@ if(i === 0) {
 }
 
 while(gameOn) {
+	var count = 0;
 	if(i === 0) {
 		var yourmove = Inputmove(prompt("What is your move?")); 
 		var moveOn = true; 
@@ -61,7 +62,15 @@ while(gameOn) {
 				moveOn = false;
 				i = 1;
 			} else {
+				if(count === 5){
+					//ask if user wants to keep playing
+				}
 				yourmove = Inputmove(prompt("This spot is already taken. Try again please."));
+				//This possibly sends the program into an infinite loop, which I experienced, I would suggest
+				// setting up a counter, so after, say, 5 times of hitting this, ask the user if they want 
+				// to keep playing.
+				count++;
+				
 			}
 		}
 	} else if (i === 1) {
