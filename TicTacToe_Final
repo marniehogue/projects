@@ -9,10 +9,17 @@ var board = [0,0,0,0,0,0,0,0,0]
 var gameOn = true;
 var moveOn = true;
 
+//We'll use the variable "i" when we choose who goes first; 
+//it generates a "0" or "1" randomly.
+//It'll also help us swtich the turns between the player 
+//and the computer later on. 
+
 var i = Math.floor(Math.random()*2);
 
-//Below describes a function that allows you 
-//to choose which board square you want to put your move. 
+//Below describes a function that allows the player
+//to choose a board square in which to place a move.
+//The "input" can be either capital or lowercase. 
+//In other words, "A3" and "a3" will both work.  
 
 var Inputmove = function(input) {
 	var UpperCaseinput = input.toUpperCase(); 
@@ -31,7 +38,8 @@ var Inputmove = function(input) {
 };
 
 //This is the function that will draw either an "X"
-// or an "O" on the board. 
+//or an "O" on the board, or leave it blank
+//if no move is made.
 
 var Outputmove = function(p){
     switch(p) {
@@ -41,6 +49,7 @@ var Outputmove = function(p){
     }
 };
 
+//This is where we draw the board in true tictactoe fashion.
 
 var drawBoard = function(){
 	console.log(" A  B  C");
@@ -55,8 +64,8 @@ var drawBoard = function(){
 console.log("Welcome to TicTacToe! You will be X's and the computer will be O's. Good luck!");
 
 
-//To play this game, enter the board square in which you would like to enter an X. 
-//Try to get three X's in a row without the computer stopping you or doing it first!
+//To play this game, enter the board square in which you would like to place an X. 
+//The goal of the game is to get place three X's in a row without the computer stopping you or doing it first!
 
 confirm("Are you ready?");
 
@@ -64,7 +73,7 @@ console.log("Let's draw the board!");
 
 drawBoard();
 
-//For this game, we will decide randomly who gets the first move!
+//The code below decides randomly who gets the first move!
 
 if(i === 0) {
 	console.log("You have the first move!");
@@ -73,7 +82,7 @@ if(i === 0) {
 }
 
 //The section below is the main logic of the game; 
-//it cycles back and forth between your turn and the computer's turn
+//it cycles back and forth between the player's turn and the computer's turn,
 //and adds the X's and O's to the right squares on the board.
 
 while(gameOn) {
@@ -88,6 +97,7 @@ while(gameOn) {
 				i = 1;
 			} else {
 				yourmove = Inputmove(prompt("This spot is already taken. Try again please."));
+				moveOn = true; 
 			}
 		}
 	} else if (i === 1) {
@@ -107,7 +117,7 @@ while(gameOn) {
 		}
 	}
 
-	//This section will allow use to check who won, or if it is a tie.
+//This section will allow use to check who won, or if the game ended in a tie.
 
  	var winningscores = [
         board[0] + board[1] + board[2],
@@ -148,7 +158,8 @@ while(gameOn) {
 	}
 }
 
-//This section gives allows us the chance to play again!
+//This section gives allows the player the chance to play again!
+//It also resets the board. 
 
 function playAgain() {
 	var y = prompt("Play again?"); 
@@ -161,6 +172,7 @@ function playAgain() {
 			gameOn = false;
 		}
 }
+
 
 
 	
