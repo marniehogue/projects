@@ -8,8 +8,8 @@
 var board = [0,0,0,0,0,0,0,0,0]
 var gameOn = true;
 var moveOn = true;
-var computersecondmoveready = false;
-var smartcheck = true; 
+/*var computersecondmoveready = false;
+var smartcheck = true; */
 
 //We'll use the variable "i" when we choose who goes first; 
 //it generates a "0" or "1" randomly.
@@ -63,21 +63,6 @@ var drawBoard = function(){
 
 };
 
-// allows us to check who won, or if the game ended in a tie.
-var scores = [
-        board[0] + board[1] + board[2],
-        board[3] + board[4] + board[5],
-        board[6] + board[7] + board[8],
-        board[0] + board[3] + board[6],
-        board[1] + board[4] + board[7],
-        board[2] + board[5] + board[8],
-        board[0] + board[4] + board[8],
-        board[2] + board[4] + board[6]
-    ];
-
-//this will help the computer add skill later on.
-var scoresarray = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-
 
 console.log("Welcome to TicTacToe! You will be X's and the computer will be O's. Good luck!");
 
@@ -87,7 +72,8 @@ console.log("Welcome to TicTacToe! You will be X's and the computer will be O's.
 
 confirm("Are you ready?");
 
-var level = prompt("What level would you like to play? Choose easy or hard!");
+//The player can choose easy or medium levels.
+var level = prompt("What level would you like to play? Choose easy or medium!");
 
 console.log("Let's draw the board!");
 
@@ -106,6 +92,21 @@ if(i === 0) {
 //and adds the X's and O's to the right squares on the board.
 
 while(gameOn) {
+
+	var scores = [
+        board[0] + board[1] + board[2],
+        board[3] + board[4] + board[5],
+        board[6] + board[7] + board[8],
+        board[0] + board[3] + board[6],
+        board[1] + board[4] + board[7],
+        board[2] + board[5] + board[8],
+        board[0] + board[4] + board[8],
+        board[2] + board[4] + board[6]
+    ];
+
+	var scoresarray = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+	//this section logs the player's move
 	if(i === 0) {
 		var yourmove = Inputmove(prompt("What is your move?")); 
 		var moveOn = true; 
@@ -120,11 +121,11 @@ while(gameOn) {
 				moveOn = true; 
 			}
 		}
-	//this section of code tells the computer what to do on its turn
+	//this section log's the computer's move
 	} else if (i === 1) {
 		console.log("It's the computer's turn!");
-		//this section of code tells the computer what to do on "easy"
-		if ((level = "easy") || ((level = "hard") && (smartcheck = false))) {
+		//this section makes the computer play "easy" level
+		if (level = "easy") {
 			var computermove = Math.floor(Math.random()*9);
 			moveOn = true; 
 			while(moveOn) { 
@@ -138,98 +139,86 @@ while(gameOn) {
 					moveOn = true;
 				}
 			}
-		//this section of code tells the computer what to do on "hard"
-		} if (level = "hard") { 
+		//this section makes the computer play "medium" level
+		} else if (level = "medium") {
 
-			var computermove = Math.floor(Math.random()*9);
-			moveOn = true; 
-			while(moveOn) { 
-				if (board[computermove] === 0) {
-					board[computermove] = 10;
-					drawBoard(); 
-					moveOn = false; 
-					i = 0; 
-					computersecondmoveready = true;
-				} else {
-					var computermove = Math.floor(Math.random()*9);
-					moveOn = true;
-				}
-			//this allows the computer to add skill only after the first move.
-			if (computersecondmoveready = true) {
+			for (m = 0; m < scores.length; m++){
 
-				smartcheck = true;
+ 				//the section below allows the computer to place a winning move if possible
+				if (scores[m] = 20) { 
 
- 				for (m = 0; m < scores.length; m++){
-
- 					//the section below allows the computer to place a winning move
-					if (scores[m] = 20) { 
-
-						if (board[scoresarray[m][0]] === 0){
+					if (board[scoresarray[m][0]] === 0){
 			
-							computermove = scoresarray[m][0];
-							drawBoard(); 
-							i = 0; 
+						//computermove = scoresarray[m][0];
+						board[scoresarray[m][0]] = 10;
+						drawBoard(); 
+						i = 0; 
 
-						} if (board[scoresarray[m][1]] === 0){
+					} else if (board[scoresarray[m][1]] === 0){
 
-							computermove = winningscoresarray[m][1];
-							drawBoard(); 
-							i = 0; 
+						//computermove = scoresarray[m][1];
+						board[scoresarray[m][1]] = 10;
+						drawBoard(); 
+						i = 0; 
 
-						} if (board[scoresarray[m][2]] === 0){
+					} else if (board[scoresarray[m][2]] === 0){
 
-							computermove = winningscoresarray[m][2];
-							drawBoard(); 
-							i = 0; 
-						} else {
-							smartcheck = false;
-						}
+						//computermove = scoresarray[m][2];
+						board[scoresarray[m][2]] = 10;
+						drawBoard(); 
+						i = 0; 
 
-					//the section below allows the computer to place a block
-					} if (scores[m] = 2) {
+					} else {
+
+						level = "easy";
+					}
+
+				//the section below allows the computer to place a block if possible
+				} else if (scores[m] = 2) {
 		
-						if (board[scoresarray[m][0]] === 0){
+					if (board[scoresarray[m][0]] === 0){
 			
-							computermove = scoresarray[m][0];
-							drawBoard(); 
-							i = 0; 
+						//computermove = scoresarray[m][0];
+						board[scoresarray[m][0]] = 10;
+						drawBoard(); 
+						i = 0; 
 
-						} if (board[scoresarray[m][1]] === 0){
+					} else if (board[scoresarray[m][1]] === 0){
 
-							computermove = winningscoresarray[m][1];
-							drawBoard(); 
-							i = 0; 
+						//computermove = scoresarray[m][1];
+						board[scoresarray[m][1]] = 10;
+						drawBoard(); 
+						i = 0; 
 
-						} if (board[scoresarray[m][2]] === 0){
+					} else if (board[scoresarray[m][2]] === 0){
 
-							computermove = winningscoresarray[m][2];
-							drawBoard(); 
-							i = 0; 
-						} else {
+						//computermove = scoresarray[m][2];
+						board[scoresarray[m][2]] = 10;
+						drawBoard(); 
+						i = 0; 
 
-							smartcheck = false; 
-							
-						}
+					} else {
+
+						level = "easy"; 
 					}
 				}
 			}
 		}
 	}
-		
-
-		
 
 
+	//check who is winner 
 	for(var j = 0; j < scores.length; j++){
     	if(scores[j] === 3){
         	console.log("You Win!");
         	gameOn = false;
+        	playAgain();
         	break; 
     	} else if(scores[j] === 30){
         	console.log("You Lose!");
         	gameOn = false;
+        	playAgain();
         	break; 
-      
     	}
 	}
 
@@ -246,10 +235,12 @@ while(gameOn) {
 	if(gameOn === true && (scoreSum === 54 || scoreSum === 45)){
     	console.log("It's a Tie!");
     	gameOn = false;
+    	playAgain();
 	}
+
 }
 
-playAgain(); 
+
 
 //This section gives allows the player the chance to play again!
 //It also resets the board. 
