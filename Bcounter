@@ -1,0 +1,13 @@
+var count = 0; 
+function countbs(string){
+	var newstring = string.toLowerCase();
+	for(N=0; N < newstring.length; N++){
+		if(newstring.charAt(N)=="b"){
+			count = count + 1;
+		}
+	}
+	console.log(count);
+	console.log("This word has " + count + " 'b's in it!");
+}
+
+countbs("Bubbuhbuh");
