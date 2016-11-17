@@ -1,0 +1,11 @@
+// Write your code below!
+var userAge = parseInt(prompt("What is your age?"), 10)
+
+
+if (isNaN(userAge)){
+    console.log ("Silly you! This is not a valid age.")
+} else if (userAge <18) {
+    console.log ("You are under 18. This program is only made for those 18 and over!")
+} else {
+    console.log ("You passed the test! You can participate in our program.")
+}
