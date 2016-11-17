@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+  <title>Marnie Hogue</title>
+  <style>
+    body {
+      margin-top: 150px;
+      text-align: center;
+      background: url("http://i.imgur.com/GKRDysX.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-family: courier;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    input {
+      border: 0;
+      padding: 10px;
+      font-size: 18px
+    }
+    input[type="email"] {
+      font-family: courier;
+    }
+    input[type="submit"] {
+      background: white;
+      color: blue;
+      font-family: courier;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hi! I'm Marnie Hogue, an aspiring designer/developer. Say hello! Visit my blog at <a href="www.datatodesign.wordpress.com"> datatodesign.wordpress.com </a></h1>
+  <input type="email" placeholder="Your email">
+  <input type="submit">
+</body>
