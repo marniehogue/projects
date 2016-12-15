@@ -1,0 +1,31 @@
+var JohnHeight = 100;
+
+var JohnAge = 25;
+
+var Friend1Height = 200;
+
+var Friend1Age = 400;
+
+var JohnScore = JohnHeight + 5*(JohnAge); 
+
+var Friend1Score = Friend1Height + 5*(Friend1Age);
+
+var Friend2Height = 120;
+
+var Friend2Age = 70;
+
+var Friend2Score = Friend2Height + 5*(Friend2Height);
+
+
+if (JohnScore>Friend1Score &&Friend2Score) {
+	console.log('John wins with a score of ' + JohnScore + '!');
+} else if (Friend1Score> Friend2Score && JohnScore) {
+	console.log('Friend1 wins with a score of ' + Friend1Score +'!');
+} else if (Friend2Score > Friend2Score && JohnScore) {
+	console.log('Friend2 wins with a score of ' + Friend2Score + '!');
+} else {
+	console.log('No one wins. Sad.')
+};
+
+
+
