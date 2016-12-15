@@ -1,0 +1,8 @@
+function FirstFactorial(num) { 
+total = [1]
+for (i=2; i<=num; i++){
+ 	 total = total*i
+}
+	console.log(total);
+}
+FirstFactorial(5);
